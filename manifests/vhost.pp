@@ -66,6 +66,14 @@ define apache::vhost(
     }
   }
 
+  # create symlinks in sites-enabled for debian-based distros
+  case $::operatingsystem {
+    'debian', 'ubuntu': {
+      a2site { $name: ensure => present, }
+      notify { "A2site(${name}) probably not fully implemented yet!": }
+    }
+  }
+
   file { "${priority}-${name}.conf":
       path    => "${apache::params::vdir}/${priority}-${name}.conf",
       content => template($template),
