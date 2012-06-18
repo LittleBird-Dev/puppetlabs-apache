@@ -72,6 +72,8 @@ define apache::vhost(
         file { "${priority}-${name}":
             ensure => link,
             target => "${apache::params::vdir}/${priority}-${name}.conf",
+            # apache::params::edir is ONLY defined
+            # when ::operatingsystem is debian or ubuntu
             path   => "${apache::params::edir}/${priority}-${name}.conf",
         }
     }
