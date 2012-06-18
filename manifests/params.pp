@@ -49,6 +49,7 @@ class apache::params {
       $ssl_package = 'apache-ssl'
       $apache_dev  = ['libaprutil1-dev', 'libapr1-dev', 'apache2-prefork-dev']
       $vdir = '/etc/apache2/sites-available/'
+      $edir = '/etc/apache2/sites-enabled/'
     }
     default: {
       $apache_name = 'apache2'
