@@ -17,10 +17,11 @@ NameVirtualHost <%= vhost_name %>:<%= port %>
         Order allow,deny
         allow from all
     </Directory>
-
-    CustomLog /var/log/<%= scope.lookupvar("apache::params::apache_name") %>/<%= name %>_access.log combined
-    ErrorLog  /var/log/<%= scope.lookupvar("apache::params::apache_name") %>/<%= name %>_error.log
+    
+    ErrorLog  <%= logroot %>/<%= name %>_error.log
+    CustomLog <%= logroot %>/<%= name %>_access.log combined
     LogLevel warn
+  
     ServerSignature Off
 </VirtualHost>
 
